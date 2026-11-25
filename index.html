@@ -209,7 +209,6 @@ function draw() {
   document.title = a.n + " vs " + b.n + " — сравнение характеристик и FPS | PCLabs";
   if (window.history && window.history.replaceState) {
     var newUrl = "?cat=" + cat + "&m1=" + encodeURIComponent(a.n) + "&m2=" + encodeURIComponent(b.n);
-Izmantojiet kodu piesardzīgi.
 window.history.replaceState(null, "", newUrl);
 }
 var vt = document.getElementById("vTitle");
