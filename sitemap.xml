@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://sitemaps.org">
+  <url><loc>https://pclabs211.github.io</loc><priority>1.0</priority></url>
+  <url><loc>https://pclabs211.github.io?cat=gpu&amp;m1=NVIDIA%20RTX%204060&amp;m2=NVIDIA%20RTX%203060%20(12GB)</loc><priority>0.8</priority></url>
+  <url><loc>https://pclabs211.github.io?cat=gpu&amp;m1=NVIDIA%20RTX%205070&amp;m2=NVIDIA%20RTX%204070%20Super</loc><priority>0.8</priority></url>
+  <url><loc>https://pclabs211.github.io?cat=gpu&amp;m1=AMD%20RX%207600&amp;m2=NVIDIA%20RTX%204060</loc><priority>0.8</priority></url>
+  <url><loc>https://pclabs211.github.io?cat=cpu&amp;m1=AMD%20Ryzen%205%205600&amp;m2=Intel%20Core%20i5-12400F</loc><priority>0.8</priority></url>
+  <url><loc>https://pclabs211.github.io?cat=cpu&amp;m1=AMD%20Ryzen%207%207800X3D&amp;m2=Intel%20Core%20i7-14700K</loc><priority>0.8</priority></url>
+  <url><loc>https://pclabs211.github.io?cat=cpu&amp;m1=Intel%20Xeon%20E5-2680%20v4&amp;m2=AMD%20Ryzen%205%205500</loc><priority>0.8</priority></url>
+</urlset>
