@@ -53,7 +53,18 @@ td{padding:10px 8px;border-bottom:1px solid #334155}
 <body>
 <header>
 <div class="container header-inner">
-<a href="#" class="logo">PC<span>Labs</span></a>
+<a href="#" class="logo" style="display:flex;align-items:center;gap:10px">
+  <svg width="34" height="34" viewBox="0 0 36 36" fill="none" xmlns="http://w3.org">
+    <defs>
+      <linearGradient id="pcg" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#3b82f6"/>
+        <stop offset="100%" stop-color="#10b981"/>
+      </linearGradient>
+    </defs>
+    <rect x="2" y="2" width="32" height="32" rx="9" fill="url(#pcg)"/>
+    <path d="M20 7L11 20H18L16 29L25 16H18L20 7Z" fill="#0f172a"/>
+  </svg>
+  <span>PC<span style="color:#3b82f6">Labs</span></span></a>
 <div>
 <button class="tab-btn active" id="btnGpu" onclick="setCat('gpu')">Видеокарты</button>
 <button class="tab-btn" id="btnCpu" onclick="setCat('cpu')">Процессоры</button>
