@@ -229,8 +229,8 @@ function draw() {
   var btn2 = document.getElementById("b2");
   btn1.innerHTML = "Цена " + a.n;
   btn2.innerHTML = "Цена " + b.n;
-  btn1.href = "https://yandex.ru" + encodeURIComponent(a.n);
-  btn2.href = "https://yandex.ru" + encodeURIComponent(b.n);
+ btn1.href = "https://yandex.ru" + encodeURIComponent(a.n.replace(/\s*\((Laptop|встройка)\)/gi, ""));
+  btn2.href = "https://yandex.ru" + encodeURIComponent(b.n.replace(/\s*\((Laptop|встройка)\)/gi, ""));
   var w1 = parseInt(a.p3) || 150;
   var w2 = parseInt(b.p3) || 150;
   var psu1 = Math.ceil((w1 + 250) / 50) * 50;
