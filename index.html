@@ -30,7 +30,8 @@ header{background:#1e293b;border-bottom:1px solid #334155;padding:16px 0;margin-
 table{width:100%;border-collapse:collapse;font-size:14px}
 td{padding:10px 8px;border-bottom:1px solid #334155}
 .buy-btn{display:block;margin-top:12px;text-align:center;background:#10b981;color:#064e3b;font-weight:700;padding:10px;border-radius:8px;text-decoration:none}
-@media(max-width:700px){.selector-box,.grid-2{grid-template-columns:1fr}}
+.footer-disclaimer{max-width:960px;margin:24px auto 0;padding:16px;text-align:center;color:#64748b;font-size:12px;line-height:1.5;border-top:1px solid rgba(51,65,85,0.5)}
+@media(max-width:700px){.header-inner{flex-wrap:wrap;gap:10px}.selector-box,.grid-2{grid-template-columns:1fr}.verdict-title{font-size:17px}.card{padding:16px}td{padding:8px 4px;font-size:13px}}
 </style>
 <meta name="description" content="PCLabs — быстрое онлайн-сравнение видеокарт и процессоров: тесты FPS в CS2, Cyberpunk 2077, GTA V и Fortnite, характеристики, подбор блока питания и актуальные цены.">
 <meta name="keywords" content="сравнение видеокарт, сравнение процессоров, тесты fps, подобрать блок питания, rtx 5090, rtx 4060, ryzen 5 5600, pclabs">
@@ -67,6 +68,10 @@ td{padding:10px 8px;border-bottom:1px solid #334155}
 <div class="verdict-card">
 <div class="verdict-title" id="vTitle">Сравнение</div>
 </div>
+<div class="verdict-card" style="border-color:#8b5cf6;text-align:left;padding:16px 20px">
+<div style="font-size:13px;color:#a78bfa;font-weight:700;margin-bottom:6px">💡 ВЕРДИКТ: ЦЕНА / КАЧЕСТВО</div>
+<div id="valueTip" style="font-size:14px;color:#e2e8f0;line-height:1.5"></div>
+</div>
 <div class="verdict-card" style="border-color:#10b981;text-align:left;padding:16px 20px">
 <div style="font-size:13px;color:#10b981;font-weight:700;margin-bottom:4px">СОВЕТ ПО СБОРКЕ И БЛОКУ ПИТАНИЯ</div>
 <div id="buildTip" style="font-size:14px;color:#e2e8f0"></div>
@@ -76,8 +81,8 @@ td{padding:10px 8px;border-bottom:1px solid #334155}
 <h3>Производительность</h3>
 <div id="bars"></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-<a href="https://market.yandex.ru/search?text=" target="_blank" class="buy-btn" id="b1">Цена №1</a>
-<a href="https://market.yandex.ru/search?text=" target="_blank" class="buy-btn" style="background:#8b5cf6;color:#fff" id="b2">Цена №2</a>
+<a href="https://yandex.ru" target="_blank" class="buy-btn" id="b1">Цена №1</a>
+<a href="https://yandex.ru" target="_blank" class="buy-btn" style="background:#8b5cf6;color:#fff" id="b2">Цена №2</a>
 </div>
 </div>
 <div class="card">
@@ -94,11 +99,10 @@ td{padding:10px 8px;border-bottom:1px solid #334155}
   <div style="font-size:16px;font-weight:700;margin-bottom:14px;color:#f8fafc;">🔥 Популярные сравнения</div>
   <div id="popGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;"></div>
 </div>
-
+<footer class="footer-disclaimer">Информация на сайте PCLabs носит исключительно справочный и ознакомительный характер и не является публичной офертой. Показатели FPS и энергопотребления являются ориентировочными и зависят от конкретной сборки ПК и настроек графики.</footer>
 <script src="db.js"></script>
 <script>
 var cat = "gpu";
-
 var popularPairs = [
   {c:"gpu", n1:"NVIDIA RTX 4060", n2:"NVIDIA RTX 3060 (12GB)"},
   {c:"gpu", n1:"NVIDIA RTX 5070", n2:"NVIDIA RTX 4070 Super"},
@@ -112,9 +116,8 @@ var popularPairs = [
   {c:"cpu", n1:"AMD Ryzen 7 9800X3D", n2:"AMD Ryzen 7 7800X3D"},
   {c:"cpu", n1:"Intel Xeon E5-2680 v4", n2:"AMD Ryzen 5 5500"},
   {c:"cpu", n1:"AMD Ryzen 7 7840HS (Laptop)", n2:"Intel Core i7-13700H (Laptop)"}
-];
-
-function getLabel(item) {
+]; 
+  function getLabel(item) {
   if (cat === "gpu" && item.p1 && item.n.indexOf("GB)") === -1 && item.n.indexOf("ГБ)") === -1) {
     var mem = item.p1.split(" ").slice(0, 2).join(" ");
     return item.n + " (" + mem + ")";
@@ -217,12 +220,17 @@ function draw() {
   else if (a.s > b.s) vt.innerHTML = '<span style="color:#10b981">' + a.n + '</span> мощнее на ' + Math.round((a.s - b.s) / b.s * 100) + '%';
   else vt.innerHTML = '<span style="color:#8b5cf6">' + b.n + '</span> мощнее на ' + Math.round((b.s - a.s) / a.s * 100) + '%';
 
+  var diff = a.s === b.s ? 0 : Math.round(Math.abs(a.s - b.s) / Math.min(a.s, b.s) * 100);
+  var topM = a.s >= b.s ? a : b;
+  var lowM = a.s >= b.s ? b : a;
+  document.getElementById("valueTip").innerHTML = diff === 0 ? "Модели равны по мощности — берите ту, что дешевле." : (diff <= 15 ? "<b>" + topM.n + "</b> быстрее всего на <b>" + diff + "%</b> — разница почти незаметна, по цене/качеству выгоднее взять <b>" + lowM.n + "</b>." : "<b>" + topM.n + "</b> мощнее на <b>" + diff + "%</b> и подойдёт для высоких настроек, а <b>" + lowM.n + "</b> выгоднее по цене/качеству для экономии бюджета.");
+
   var btn1 = document.getElementById("b1");
   var btn2 = document.getElementById("b2");
   btn1.innerHTML = "Цена " + a.n;
   btn2.innerHTML = "Цена " + b.n;
-btn1.href =  "https://market.yandex.ru/search?text=" + encodeURIComponent(a.n);
-  btn2.href =  "https://market.yandex.ru/search?text=" + encodeURIComponent(b.n);
+  btn1.href = "https://yandex.ru" + encodeURIComponent(a.n);
+  btn2.href = "https://yandex.ru" + encodeURIComponent(b.n);
   var w1 = parseInt(a.p3) || 150;
   var w2 = parseInt(b.p3) || 150;
   var psu1 = Math.ceil((w1 + 250) / 50) * 50;
@@ -272,5 +280,3 @@ btn1.href =  "https://market.yandex.ru/search?text=" + encodeURIComponent(a.n);
 })();
 </script>
 </body>
-</html>
-
