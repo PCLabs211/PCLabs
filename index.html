@@ -8,15 +8,14 @@
 body{background:#0f172a;color:#f8fafc;font-family:sans-serif;margin:0;padding-bottom:40px}
 .container{max-width:960px;margin:0 auto;padding:0 16px}
 header{background:#1e293b;border-bottom:1px solid #334155;padding:16px 0;margin-bottom:20px}
-.header-inner{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.header-inner{display:flex;justify-content:space-between;align-items:center}
 .logo{font-size:22px;font-weight:800;color:#fff;text-decoration:none}
 .logo span{color:#3b82f6}
-.tab-group{display:flex;gap:6px}
-.tab-btn{background:#0f172a;color:#94a3b8;border:1px solid #334155;padding:8px 16px;border-radius:8px;cursor:pointer;font-weight:600;font-size:14px}
+.tab-btn{background:#0f172a;color:#94a3b8;border:1px solid #334155;padding:8px 16px;border-radius:8px;cursor:pointer;font-weight:600;margin-left:6px}
 .tab-btn.active{background:#3b82f6;color:#fff;border-color:#3b82f6}
 .ad-banner{background:#172033;border:1px dashed #334155;border-radius:10px;padding:12px;text-align:center;color:#94a3b8;font-size:13px;margin-bottom:20px}
 .selector-box{background:#1e293b;border:1px solid #334155;border-radius:14px;padding:20px;display:grid;grid-template-columns:1fr 50px 1fr;gap:14px;align-items:center;margin-bottom:20px}
-.search-in,select{width:100%;padding:12px 10px;border-radius:8px;background:#0f172a;color:#fff;border:1px solid #334155;font-size:15px;margin-top:6px;box-sizing:border-box}
+.search-in,select{width:100%;padding:10px;border-radius:8px;background:#0f172a;color:#fff;border:1px solid #334155;font-size:14px;margin-top:6px;box-sizing:border-box}
 .vs-badge{background:#3b82f6;color:#fff;font-weight:800;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto}
 .verdict-card{background:#1e293b;border:1px solid #3b82f6;border-radius:14px;padding:20px;text-align:center;margin-bottom:20px}
 .verdict-title{font-size:20px;font-weight:700}
@@ -24,70 +23,61 @@ header{background:#1e293b;border-bottom:1px solid #334155;padding:16px 0;margin-
 .card{background:#1e293b;border:1px solid #334155;border-radius:14px;padding:20px}
 .card h3{margin-top:0;border-bottom:1px solid #334155;padding-bottom:10px}
 .stat-row{margin-bottom:12px}
-.stat-labels{display:flex;justify-content:space-between;font-size:14px;margin-bottom:4px;gap:6px}
-.bar-bg{background:#0f172a;height:10.0px;border-radius:6px;overflow:hidden;display:flex}
+.stat-labels{display:flex;justify-content:space-between;font-size:14px;margin-bottom:4px}
+.bar-bg{background:#0f172a;height:10px;border-radius:6px;overflow:hidden;display:flex}
 .bar-1{background:#10b981;height:100%}
 .bar-2{background:#8b5cf6;height:100%}
 table{width:100%;border-collapse:collapse;font-size:14px}
 td{padding:10px 8px;border-bottom:1px solid #334155}
-.buy-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
-.buy-btn{display:block;text-align:center;background:#10b981;color:#064e3b;font-weight:700;padding:12px 10px;border-radius:8px;text-decoration:none;font-size:14px}
-.footer-disclaimer{max-width:960px;margin:24px auto 0;padding:16px;text-align:center;color:#64748b;font-size:12px;line-height:1.5;border-top:1px solid rgba(51,65,85,0.5)}
-@media(max-width:700px){
-  .selector-box,.grid-2,.buy-grid{grid-template-columns:1fr}
-  .vs-badge{width:34px;height:34px;font-size:13px}
-  .verdict-title{font-size:17px}
-  .card{padding:16px}
-  td{padding:8px 4px;font-size:13px}
-  .tab-btn{padding:8px 12px;font-size:13px}
-}
+.buy-btn{display:block;margin-top:12px;text-align:center;background:#10b981;color:#064e3b;font-weight:700;padding:10px;border-radius:8px;text-decoration:none}
+@media(max-width:700px){.selector-box,.grid-2{grid-template-columns:1fr}}
 </style>
 <meta name="description" content="PCLabs — быстрое онлайн-сравнение видеокарт и процессоров: тесты FPS в CS2, Cyberpunk 2077, GTA V и Fortnite, характеристики, подбор блока питания и актуальные цены.">
 <meta name="keywords" content="сравнение видеокарт, сравнение процессоров, тесты fps, подобрать блок питания, rtx 5090, rtx 4060, ryzen 5 5600, pclabs">
+<meta property="og:title" content="PCLabs — Сравнение видеокарт и процессоров онлайн">
+<meta property="og:description" content="Сравните FPS в играх, характеристики, энергопотребление и узнайте, какая видеокарта или процессор мощнее.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://w3.org' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 </head>
 <body>
 <header>
 <div class="container header-inner">
 <a href="#" class="logo">PC<span>Labs</span></a>
-<div class="tab-group">
+<div>
 <button class="tab-btn active" id="btnGpu" onclick="setCat('gpu')">Видеокарты</button>
 <button class="tab-btn" id="btnCpu" onclick="setCat('cpu')">Процессоры</button>
 </div>
 </div>
 </header>
 <div class="container">
-<div class="ad-banner">Место под рекламный блок</div>
+<div class="ad-banner">Место под рекламный блок (Яндекс.Директ / РСЯ)</div>
 <div class="selector-box">
 <div>
 <b style="color:#10b981;font-size:12px">МОДЕЛЬ №1</b>
-<input type="text" id="q1" class="search-in" placeholder="Поиск..." onkeyup="doFilter(1)">
+<input type="text" id="q1" class="search-in" placeholder="Поиск (напр. 4070)..." onkeyup="doFilter(1)">
 <select id="s1" onchange="draw()"></select>
 </div>
 <div class="vs-badge">VS</div>
 <div>
 <b style="color:#8b5cf6;font-size:12px">МОДЕЛЬ №2</b>
-<input type="text" id="q2" class="search-in" placeholder="Поиск..." onkeyup="doFilter(2)">
+<input type="text" id="q2" class="search-in" placeholder="Поиск (напр. 5060)..." onkeyup="doFilter(2)">
 <select id="s2" onchange="draw()"></select>
 </div>
 </div>
 <div class="verdict-card">
 <div class="verdict-title" id="vTitle">Сравнение</div>
 </div>
-<div class="verdict-card" style="border-color:#8b5cf6;text-align:left;padding:16px 20px">
-<div style="font-size:13px;color:#a78bfa;font-weight:700;margin-bottom:6px">💡 ВЕРДИКТ: ЦЕНА / КАЧЕСТВО</div>
-<div id="valueTip" style="font-size:14px;color:#e2e8f0;line-height:1.5"></div>
-</div>
 <div class="verdict-card" style="border-color:#10b981;text-align:left;padding:16px 20px">
-<div style="font-size:13px;color:#10b981;font-weight:700;margin-bottom:6px">⚡ СОВЕТ ПО СБОРКЕ И БЛОКУ ПИТАНИЯ</div>
-<div id="buildTip" style="font-size:14px;color:#e2e8f0;line-height:1.5"></div>
+<div style="font-size:13px;color:#10b981;font-weight:700;margin-bottom:4px">СОВЕТ ПО СБОРКЕ И БЛОКУ ПИТАНИЯ</div>
+<div id="buildTip" style="font-size:14px;color:#e2e8f0"></div>
 </div>
 <div class="grid-2">
 <div class="card">
 <h3>Производительность</h3>
 <div id="bars"></div>
-<div class="buy-grid">
-<a href="https://yandex.ru" target="_blank" class="buy-btn" id="b1">Цена №1</a>
-<a href="https://yandex.ru" target="_blank" class="buy-btn" style="background:#8b5cf6;color:#fff" id="b2">Цена №2</a>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<a href="https://market.yandex.ru/search?text=" target="_blank" class="buy-btn" id="b1">Цена №1</a>
+<a href="https://market.yandex.ru/search?text=" target="_blank" class="buy-btn" style="background:#8b5cf6;color:#fff" id="b2">Цена №2</a>
 </div>
 </div>
 <div class="card">
@@ -100,19 +90,151 @@ td{padding:10px 8px;border-bottom:1px solid #334155}
 <table id="tSpecs"></table>
 </div>
 </div>
+<div style="max-width:900px;margin:28px auto 16px;padding:20px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;">
+  <div style="font-size:16px;font-weight:700;margin-bottom:14px;color:#f8fafc;">🔥 Популярные сравнения</div>
+  <div id="popGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;"></div>
+</div>
+
 <script src="db.js"></script>
 <script>
 var cat = "gpu";
-// Полный скрипт обработки данных доступен в исходных материалах
+
+var popularPairs = [
+  {c:"gpu", n1:"NVIDIA RTX 4060", n2:"NVIDIA RTX 3060 (12GB)"},
+  {c:"gpu", n1:"NVIDIA RTX 5070", n2:"NVIDIA RTX 4070 Super"},
+  {c:"gpu", n1:"AMD RX 7600", n2:"NVIDIA RTX 4060"},
+  {c:"gpu", n1:"AMD RX 7800 XT", n2:"NVIDIA RTX 4070"},
+  {c:"gpu", n1:"NVIDIA RTX 5060", n2:"NVIDIA RTX 4060 Ti (8GB)"},
+  {c:"gpu", n1:"NVIDIA RTX 4060 Laptop", n2:"NVIDIA RTX 4060"},
+  {c:"cpu", n1:"AMD Ryzen 5 5600", n2:"Intel Core i5-12400F"},
+  {c:"cpu", n1:"AMD Ryzen 5 7500F", n2:"Intel Core i5-13400F"},
+  {c:"cpu", n1:"AMD Ryzen 7 7800X3D", n2:"Intel Core i7-14700K"},
+  {c:"cpu", n1:"AMD Ryzen 7 9800X3D", n2:"AMD Ryzen 7 7800X3D"},
+  {c:"cpu", n1:"Intel Xeon E5-2680 v4", n2:"AMD Ryzen 5 5500"},
+  {c:"cpu", n1:"AMD Ryzen 7 7840HS (Laptop)", n2:"Intel Core i7-13700H (Laptop)"}
+];
+
+function getLabel(item) {
+  if (cat === "gpu" && item.p1 && item.n.indexOf("GB)") === -1 && item.n.indexOf("ГБ)") === -1) {
+    var mem = item.p1.split(" ").slice(0, 2).join(" ");
+    return item.n + " (" + mem + ")";
+  }
+  return item.n;
+}
+
+function renderPopular() {
+  var box = document.getElementById("popGrid");
+  if (!box) return;
+  box.innerHTML = "";
+  for (var i = 0; i < popularPairs.length; i++) {
+    var p = popularPairs[i];
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.style.cssText = "text-align:left;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:rgba(15,23,42,0.6);color:#e2e8f0;font-size:13px;cursor:pointer;transition:0.2s;";
+    btn.innerHTML = "<span style='color:#10b981;font-weight:600'>" + p.n1 + "</span> <span style='color:#94a3b8'>vs</span> <span style='color:#8b5cf6;font-weight:600'>" + p.n2 + "</span>";
+    btn.onclick = (function(pair) {
+      return function() {
+        openPair(pair.c, pair.n1, pair.n2);
+        window.scrollTo({top: 0, behavior: "smooth"});
+      };
+    })(p);
+    box.appendChild(btn);
+  }
+}
+
+function openPair(category, name1, name2) {
+  setCat(category, true);
+  var list = db[cat];
+  var idx1 = 0, idx2 = 1;
+  for (var i = 0; i < list.length; i++) {
+    if (list[i].n === name1) idx1 = i;
+    if (list[i].n === name2) idx2 = i;
+  }
+  document.getElementById("s1").value = idx1;
+  document.getElementById("s2").value = idx2;
+  draw();
+}
+
 function setCat(c, skipDraw) {
   cat = c;
   document.getElementById("btnGpu").className = c === "gpu" ? "tab-btn active" : "tab-btn";
   document.getElementById("btnCpu").className = c === "cpu" ? "tab-btn active" : "tab-btn";
+  document.getElementById("q1").value = "";
+  document.getElementById("q2").value = "";
+  fillAll(skipDraw);
 }
-</script>
-</body>
-</html>
-var gpuRec2 = b.s >= 80 ? "RTX 5080 / RTX 4080 Super / RX 7900 XTX" : (b.s >= 60 ? "RTX 5070 / RTX 4070 Super / RX 7800 XT" : "RTX 5060 / RTX 4060 / RX 7600");
+
+function fillAll(skipDraw) {
+  var list = db[cat];
+  var s1 = document.getElementById("s1");
+  var s2 = document.getElementById("s2");
+  s1.innerHTML = "";
+  s2.innerHTML = "";
+  for (var i = 0; i < list.length; i++) {
+    var lbl = getLabel(list[i]);
+    s1.innerHTML += '<option value="' + i + '">' + lbl + '</option>';
+    s2.innerHTML += '<option value="' + i + '">' + lbl + '</option>';
+  }
+  s1.value = Math.min(7, list.length - 1);
+  s2.value = Math.min(9, list.length - 1);
+  if (!skipDraw) draw();
+}
+
+function doFilter(num) {
+  var q = document.getElementById("q" + num).value.toLowerCase();
+  var s = document.getElementById("s" + num);
+  var list = db[cat];
+  s.innerHTML = "";
+  for (var i = 0; i < list.length; i++) {
+    var lbl = getLabel(list[i]);
+    if (lbl.toLowerCase().indexOf(q) !== -1) {
+      s.innerHTML += '<option value="' + i + '">' + lbl + '</option>';
+    }
+  }
+  if (s.options.length > 0) draw();
+}
+
+function makeBar(title, v1, v2) {
+  var mx = Math.max(v1, v2, 200);
+  return '<div class="stat-row"><div class="stat-labels"><b style="color:#10b981">' + v1 + ' FPS</b><span>' + title + '</span><b style="color:#8b5cf6">' + v2 + ' FPS</b></div>' +
+         '<div class="bar-bg"><div class="bar-1" style="width:' + (v1/mx*50) + '%"></div><div class="bar-2" style="width:' + (v2/mx*50) + '%"></div></div></div>';
+}
+
+function draw() {
+  var list = db[cat];
+  var a = list[document.getElementById("s1").value];
+  var b = list[document.getElementById("s2").value];
+  if (!a || !b) return;
+
+  document.title = a.n + " vs " + b.n + " — сравнение характеристик и FPS | PCLabs";
+  if (window.history && window.history.replaceState) {
+    var newUrl = "?cat=" + cat + "&m1=" + encodeURIComponent(a.n) + "&m2=" + encodeURIComponent(b.n);
+    window.history.replaceState(null, "", newUrl);
+  }
+
+  var vt = document.getElementById("vTitle");
+  if (a.s === b.s) vt.innerHTML = a.n + " и " + b.n + " равны по мощности";
+  else if (a.s > b.s) vt.innerHTML = '<span style="color:#10b981">' + a.n + '</span> мощнее на ' + Math.round((a.s - b.s) / b.s * 100) + '%';
+  else vt.innerHTML = '<span style="color:#8b5cf6">' + b.n + '</span> мощнее на ' + Math.round((b.s - a.s) / a.s * 100) + '%';
+
+  var btn1 = document.getElementById("b1");
+  var btn2 = document.getElementById("b2");
+  btn1.innerHTML = "Цена " + a.n;
+  btn2.innerHTML = "Цена " + b.n;
+btn1.href =  "https://market.yandex.ru/search?text=" + encodeURIComponent(a.n);
+  btn2.href =  "https://market.yandex.ru/search?text=" + encodeURIComponent(b.n);
+  var w1 = parseInt(a.p3) || 150;
+  var w2 = parseInt(b.p3) || 150;
+  var psu1 = Math.ceil((w1 + 250) / 50) * 50;
+  var psu2 = Math.ceil((w2 + 250) / 50) * 50;
+  var tip = document.getElementById("buildTip");
+  if (cat === "gpu") {
+    var cpuRec1 = a.s >= 65 ? "Ryzen 7 7800X3D / Core i7-14700K" : (a.s >= 40 ? "Ryzen 5 7500F / Core i5-12400F" : "Ryzen 5 5600 / Core i3-12100F");
+    var cpuRec2 = b.s >= 65 ? "Ryzen 7 7800X3D / Core i7-14700K" : (b.s >= 40 ? "Ryzen 5 7500F / Core i5-12400F" : "Ryzen 5 5600 / Core i3-12100F");
+    tip.innerHTML = "• Для <b style='color:#10b981'>" + a.n + "</b> нужен БП от <b>" + psu1 + " Вт</b> и процессор уровня <b>" + cpuRec1 + "</b>.<br>• Для <b style='color:#8b5cf6'>" + b.n + "</b> нужен БП от <b>" + psu2 + " Вт</b> и процессор уровня <b>" + cpuRec2 + "</b>.";
+  } else {
+    var gpuRec1 = a.s >= 80 ? "RTX 5080 / RTX 4080 Super / RX 7900 XTX" : (a.s >= 60 ? "RTX 5070 / RTX 4070 Super / RX 7800 XT" : "RTX 5060 / RTX 4060 / RX 7600");
+    var gpuRec2 = b.s >= 80 ? "RTX 5080 / RTX 4080 Super / RX 7900 XTX" : (b.s >= 60 ? "RTX 5070 / RTX 4070 Super / RX 7800 XT" : "RTX 5060 / RTX 4060 / RX 7600");
     tip.innerHTML = "• <b style='color:#10b981'>" + a.n + "</b> раскроет видеокарты до <b>" + gpuRec1 + "</b>.<br>• <b style='color:#8b5cf6'>" + b.n + "</b> раскроет видеокарты до <b>" + gpuRec2 + "</b>.";
   }
 
@@ -151,3 +273,4 @@ var gpuRec2 = b.s >= 80 ? "RTX 5080 / RTX 4080 Super / RX 7900 XTX" : (b.s >= 60
 </script>
 </body>
 </html>
+
